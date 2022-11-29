@@ -1,6 +1,7 @@
 <?php
 
 // the time when the page is loaded
+date_default_timezone_set('Asia/Gaza');
 $requestTime = date("Y-m-d H:i:s");
 
 $conn =  mysqli_connect("localhost", "root", "", "security");
