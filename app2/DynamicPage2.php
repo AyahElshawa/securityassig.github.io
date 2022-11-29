@@ -17,15 +17,28 @@ $bugURL= "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $victimIP = $_SERVER['REMOTE_ADDR'];
 // echo $victimIP;
 
-$query = "INSERT INTO app2logger(request_time, victim_ip, bug_url) VALUES ('$requestTime', '$victimIP', '$bugURL')";
-// echo $query;
+$myfile = fopen("malFile2.txt", "a") or die("Unable to open file!");
+$txt = "Donald Duck\n";
+fwrite($myfile, $txt);
+fwrite($myfile, "\nThe bug URL(");
+fwrite($myfile, $bugURL);
+fwrite($myfile, ")\nThe victim's IP(");
+fwrite($myfile, $victimIP);
+fwrite($myfile, ")\nThe request time(");
+fwrite($myfile, $requestTime);
+fwrite($myfile, ")\n");
+fclose($myfile);
 
-$result = $conn->query($query);
 
-if ($result) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $query . "<br>" . $conn->error;
-}
+// $query = "INSERT INTO app2logger(request_time, victim_ip, bug_url) VALUES ('$requestTime', '$victimIP', '$bugURL')";
+// // echo $query;
+
+// $result = $conn->query($query);
+
+// if ($result) {
+//     echo "New record created successfully";
+// } else {
+//     echo "Error: " . $query . "<br>" . $conn->error;
+// }
 
 ?>
